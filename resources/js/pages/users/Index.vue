@@ -43,8 +43,12 @@ const truncateAddress = (address: Address | null): string => {
   return fullAddress.length > 40 ? fullAddress.substring(0, 37) + '...' : fullAddress;
 };
 
-const navigateToUserEdit = (userId: number): void => {
+const navigateToUserShow = (userId: number): void => {
   router.get(route('users.show', userId));
+};
+
+const navigateToUserEdit = (userId: number): void => {
+  router.get(route('users.edit', userId));
 };
 </script>
 
@@ -85,22 +89,21 @@ const navigateToUserEdit = (userId: number): void => {
                 <tr 
                   v-for="user in userData" 
                   :key="user.id" 
-                  @click="navigateToUserEdit(user.id)"
                   class="cursor-pointer hover:bg-muted/50 transition-colors"
                 >
-                  <td class="p-4 align-middle break-words">{{ user.first_name }} {{ user.last_name }}</td>
-                  <td class="p-4 align-middle break-words">{{ user.email }}</td>
-                  <td class="p-4 align-middle">
+                  <td class="p-4 align-middle break-words" @click="navigateToUserShow(user.id)">{{ user.first_name }} {{ user.last_name }}</td>
+                  <td class="p-4 align-middle break-words" @click="navigateToUserShow(user.id)">{{ user.email }}</td>
+                  <td class="p-4 align-middle" @click="navigateToUserShow(user.id)">
                     <div v-if="user.address" class="truncate max-w-[250px]" :title="user.address.street + ', ' + user.address.city + ', ' + user.address.post_code + ', ' + user.address.country">
                       {{ truncateAddress(user.address) }}
                     </div>
                     <div v-else class="text-muted-foreground">No address</div>
                   </td>
-                  <td class="p-4 align-middle text-right" @click.stop>
+                  <td class="p-4 align-middle text-right">
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      @click="navigateToUserEdit(user.id)"
+                      @click.stop="navigateToUserEdit(user.id)"
                     >
                       Edit
                     </Button>
