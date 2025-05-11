@@ -44,7 +44,7 @@ const truncateAddress = (address: Address | null): string => {
 };
 
 const navigateToUserEdit = (userId: number): void => {
-  router.get(route('users.edit', userId));
+  router.get(route('users.show', userId));
 };
 </script>
 
@@ -52,7 +52,7 @@ const navigateToUserEdit = (userId: number): void => {
   <AppLayout>
     <Head title="Users" />
 
-    <div class="container py-6 mx-auto">
+    <div class="container py-6 mx-auto px-4">
       <div class="flex flex-wrap justify-between items-center mb-6">
         <h1 class="text-2xl font-semibold">Users</h1>
         <Link :href="route('users.create')">

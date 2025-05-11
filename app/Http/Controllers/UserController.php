@@ -78,6 +78,18 @@ class UserController extends Controller
     }
 
     /**
+     * Display the specified user.
+     */
+    public function show(User $user)
+    {
+        $user->load('address');
+
+        return Inertia::render('users/Show', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
      * Show the form for editing the specified user.
      */
     public function edit(User $user)

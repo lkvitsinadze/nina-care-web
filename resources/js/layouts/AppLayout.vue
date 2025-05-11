@@ -12,7 +12,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <AppLayout :breadcrumbs="breadcrumbs" class="w-full px-4">
+    <AppLayout :breadcrumbs="breadcrumbs" class="w-full">
         <slot />
     </AppLayout>
 </template>
