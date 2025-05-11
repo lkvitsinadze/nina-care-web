@@ -84,7 +84,7 @@ class UserController extends Controller
     {
         $user->load('address');
         
-        return Inertia::render('Users/Edit', [
+        return Inertia::render('users/Edit', [
             'user' => $user,
         ]);
     }
