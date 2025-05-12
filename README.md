@@ -2,6 +2,13 @@
 
 This is the Nina Care project, a Laravel-based web application.
 
+## Assignment Overview
+The main components for the assignment are:
+
+- **MillionUsersSeeder**: Responsible for populating the database with a large dataset of one million users.
+- **UserController**: Handles the backend logic for managing users, including fetching and searching user data.
+- **Vue Pages**: The frontend user interface for displaying the users table is implemented using Vue.js, providing a dynamic and interactive experience.
+
 ## Prerequisites
 
 Before running the project, ensure you have the following installed on your system:
@@ -74,17 +81,18 @@ Before running the project, ensure you have the following installed on your syst
 
    The user list is available at `/users`.
 
-## Notes on Search Functionality
-
-- The search functionality is not optimized for superfast performance as there was no specific requirement for it.
-- It could be improved using MySQL FULLTEXT search or Laravel Scout for better performance and scalability.
-
 ## Testing
 
-Run the test suite using PHPUnit:
+To run UserController tests specifically:
 ```bash
-./vendor/bin/sail artisan test
+./vendor/bin/sail artisan test --filter=UserControllerTest
 ```
+
+## Notes
+
+- The search functionality is not optimized for superfast performance as there was no specific requirement for it.
+- The search functionality could be enhanced using MySQL FULLTEXT search or Laravel Scout to improve performance and scalability.
+- Only feature tests were added for the backend UserController. No unit tests or frontend tests are included.
 
 ## License
 
